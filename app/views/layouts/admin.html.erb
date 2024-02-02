@@ -12,8 +12,8 @@
   </head>
 
   <body>
-      <main class="flex">
-        <nav class="flex w-full">
+      <main class="flex w-full">
+        <nav class="flex">
             <div class="w-64 p-4 h-screen bg-gray-600 sticky top-0">
                 <div class="flex">
                     <%= image_tag '/logo.png', class: "w-16" %>
@@ -43,7 +43,9 @@
                 </ul>
             </div>
         </nav>
-      <%= yield %>
+        <div class="p-8 w-full">
+            <%= yield %>
+        </div>
     </main>
   </body>
 </html>
