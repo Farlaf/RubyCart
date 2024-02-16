@@ -7,6 +7,18 @@
     <strong class="block font-medium mb-1">Fulfilled:</strong>
     <%= order.fulfilled %>
   </p>
+  <% if order.order_products.any? %>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Products:</strong>
+      <ul class="list-disc ml-5">
+        <% order.order_products.each do |op| %>
+          <li>
+            <b><%= op.product.name %></b>: <%= op.size %> x <%= op.quantity %>
+          </li>
+        <% end %>
+      </ul>
+    </p>
+  <% end %>
   <p class="my-5">
     <strong class="block font-medium mb-1">Total:</strong>
     <%= order.total %>
