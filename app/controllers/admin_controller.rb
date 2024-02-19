@@ -22,7 +22,7 @@ class AdminController < ApplicationController
     days_of_week = %w[Monday Tuesday Wednesday Thursday Friday Saturday Sunday]
 
     data_hash = @revenue_by_day.to_h
-    current_day = Date.today.strftime('%A')
+    current_day = Time.zone.today.strftime('%A')
     current_day_index = days_of_week.index(current_day)
     next_day_index = (current_day_index + 1) % days_of_week.length
 
