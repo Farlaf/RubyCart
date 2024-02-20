@@ -33,7 +33,7 @@
         <%= link_to category_path(category) do  %>
           <div class="p-2">
             <div class="mb-4 rounded-lg">
-              <%= category.image.present? ? image_tag(category.image) : image_tag("https://placehold.co/250") %>
+              <%= category.image.present? ? image_tag(category.image) : image_tag("https://placehold.co/400") %>
             </div>
             <h4 class="mx-auto text-xl font-semibold leading-none tracking-tighter text-gray-900 lg:text-2xl"><%= category.name %></h4>
           </div>
