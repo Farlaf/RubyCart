@@ -1,0 +1,84 @@
+<footer class="bg-white">
+  <div class="mx-auto max-w-screen-xl px-4 pb-6 pt-8 sm:px-6 lg:px-8">
+    <div class="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-32">
+      <div class="mx-auto max-w-sm lg:max-w-none">
+        <p class="text-lg font-medium text-gray-900">About Us</p>
+        <p class="mt-8 leading-relaxed text-gray-500 text-left">
+          RubyCart is a leading online marketplace, offering a wide range of products to cater to all your needs. Our commitment ot quality and customer service ensures a great shopping experience.
+        </p>
+        <ul class="mt-8 flex justify-center gap-6 sm:justify-start md:gap-8">
+          <li>
+            <%= link_to "https://facebook.com", target: :_blank, rel: :noreferrer, class: "text-red-600  hover:text-red-700 transition text-2xl" do %>
+              <span class="sr-only">Facebook</span>
+              <%= icon("fa-brands", "facebook") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "https://instagram.com", target: :_blank, rel: :noreferrer, class: "text-red-600  hover:text-red-700 transition text-2xl" do %>
+              <span class="sr-only">Instagram</span>
+              <%= icon("fa-brands", "instagram") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "https://twitter.com/", target: :_blank, rel: :noreferrer, class: "text-red-600  hover:text-red-700 transition text-2xl" do %>
+              <span class="sr-only">Twitter</span>
+              <%= icon("fa-brands", "x-twitter") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "https://github.com/Farlaf/RubyCart", target: :_blank, rel: :noreferrer, class: "text-red-600  hover:text-red-700 transition text-2xl" do %>
+              <span class="sr-only">GitHub</span>
+              <%= icon("fa-brands", "github")%>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+      <div class="grid grid-cols-1 gap-8 text-center lg:grid-cols-2 lg:text-left">
+        <div class="text-center sm:text-left">
+          <p class="text-lg font-medium text-gray-900">Quic Links</p>
+          <ul class="mt-8 space-y-4 text-sm">
+            <li>
+              <%= link_to "Home", root_path, class:"text-gray-700 transition hover:text-gray-700/75" %>
+            </li>
+          </ul>
+        </div>
+        <div class="text-center sm:text-left">
+          <p class="text-lg font-medium text-gray-900">Contact Us</p>
+          <ul class="mt-8 space-y-4 text-sm">
+            <li>
+              <a
+                class="flex items-center justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
+                href="#"
+              >
+                <%= icon("fa-solid", "envelope", class: "text-lg") %>
+                <span class="flex-1 text-gray-700">john@doe.com</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="flex items-center justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
+                href="#"
+              >
+                <%= icon("fa-solid", "phone", class: "text-lg") %>
+                <span class="flex-1 text-gray-700">0123456789</span>
+              </a>
+            </li>
+            <li
+              class="flex items-start justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
+            >
+              <%= icon("fa-solid", "location-dot", class: "text-lg") %>
+              <address class="-mt-0.5 flex-1 not-italic text-gray-700">
+                94/2 Alle, Hua Hin, Thailand
+              </address>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mt-12 border-t border-gray-100 pt-6">
+      <div class="text-center sm:flex sm:justify-between sm:text-left">
+        <p class="mt-4 text-sm text-gray-500 sm:order-first sm:mt-0">&copy; <%= Time.zone.now.year %> Ruby Cart Corp</p>
+      </div>
+    </div>
+  </div>
+</footer>
