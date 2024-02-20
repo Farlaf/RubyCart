@@ -1,0 +1,27 @@
+<header class="fixed w-full top-0 z-20 bg-white">
+  <div class="container mx-auto px-4 py-8 flex items-center">
+    <!-- logo -->
+    <div class="mr-auto md:w-48 flex-shrink-0">
+      <%= link_to root_path do  %>
+        <%= image_tag '/logo.png', class: "h-8 md:h-10" %>
+      <% end %>
+    </div>
+    <!-- menu -->
+    <div class="mr-auto md:w-48 flex-shrink-0">
+      <%= link_to 'Shop', root_path, class: "px-4 py-1.5 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-lg lg:mt-0 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"  %>
+    </div>
+    <!-- buttons -->
+    <nav class="contents">
+      <%= link_to root_path, class: 'relative inline-block' do  %>
+        <%# <div class="absolute -top-3 -right-5 z-10 bg-yellow-400 text-xs font-bold px-1 py-0.5 rounded-sm">12</div> %>
+        <%= icon 'fa-solid', 'shopping-cart' %>
+      <% end %>
+    </nav>
+    <!-- cart count -->
+    <%# <div class="ml-4 hidden sm:flex flex-col font-bold">
+      <span class="text-xs text-gray-400">Your Cart</span>
+      <span>$2,650,59</span>
+    </div> %>
+  </div>
+  <hr>
+</header>
