@@ -1,0 +1,44 @@
+<section>
+  <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+    <div class="lg:grid lg:grid-cols-2 gap-4">
+      <% if @product.images.any? %>
+        <div class="grid grid-cols-2 gap-2">
+          <% @product.images.each do |image| %>
+            <%= image_tag image.variant(:medium) %>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="sticky top-24 h-min">
+        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl"><%= @product.name %></h1>
+        <div class="mt-10 text-3xl tracking-tight text-gray-900"><%= number_to_currency(@product.price) %></div>
+        <div class="mt-10 text-gray-700"><%= @product.description %></div>
+        <div class="mt-10">
+          <p class="text-sm font-medium text-gray-900">Size</p>
+          <div class="mt-4 grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
+            <% @product.stocks.each do |option| %>
+              <% if option.amount > 0 %>
+                <button
+                class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm undefined"
+                value="<%= option.size %>">
+                  <%= option.size %>
+                </button>
+              <% else %>
+                <button
+                    disabled
+                    class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-not-allowed bg-gray-50 text-gray-200 undefined"
+                    value="<%= option.size %>">
+                  <%= option.size %>
+                  <span aria-hidden="true" class="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200">
+                    <svg class="absolute inset-0 h-full w-full stroke-2 text-gray-200" viewBox="0 0 100 100" preserveAspectRatio="none" stroke="currentColor">
+                      <line x1="0" y1="100" x2="100" y2="0" vector-effect="non-scaling-stroke"></line>
+                    </svg>
+                  </span>
+                </button>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
