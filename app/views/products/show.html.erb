@@ -2,24 +2,25 @@
   <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
     <div class="lg:grid lg:grid-cols-2 gap-4">
       <% if @product.images.any? %>
-        <div class="grid grid-cols-2 gap-2">
+        <div class="grid grid-cols-2 gap-2 mb-20">
           <% @product.images.each do |image| %>
             <%= image_tag image.variant(:medium) %>
           <% end %>
         </div>
       <% end %>
-      <div class="sticky top-24 h-min">
+      <div data-controller="products" data-products-product-value="<%= @product.to_json %>" class="sticky top-24 h-min">
         <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl"><%= @product.name %></h1>
         <div class="mt-10 text-3xl tracking-tight text-gray-900"><%= number_to_currency(@product.price) %></div>
         <div class="mt-10 text-gray-700"><%= @product.description %></div>
         <div class="mt-10">
           <p class="text-sm font-medium text-gray-900">Size</p>
-          <div class="mt-4 grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
+          <div class="mt-4 grid grid-cols-6 gap-4 sm:grid-cols-8 lg:grid-cols-6">
             <% @product.stocks.each do |option| %>
               <% if option.amount > 0 %>
                 <button
-                class="group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm undefined"
-                value="<%= option.size %>">
+                  data-action="click->products#selectedSize"
+                  class="selected-size-item group relative flex items-center justify-center rounded-md border py-3 px-4 text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 cursor-pointer bg-white text-gray-900 shadow-sm undefined"
+                  value="<%= option.size %>">
                   <%= option.size %>
                 </button>
               <% else %>
@@ -37,6 +38,15 @@
               <% end %>
             <% end %>
           </div>
+        </div>
+        <div class="mt-10">
+          <div id="selected-size"></div>
+          <button
+            data-action="click->products#addToCart"
+            class="block w-full rounded bg-red-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
+            >
+            Add to cart
+          </button>
         </div>
       </div>
     </div>
