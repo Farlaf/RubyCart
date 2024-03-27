@@ -6,9 +6,9 @@ export default class extends Controller {
 
   addToCart() {
     const cart = localStorage.getItem("cart")
-
+    let cartArray = []
     if (cart) {
-      const cartArray = JSON.parse(cart)
+      cartArray = JSON.parse(cart)
       const foundIndex = cartArray.findIndex(item => item.id === this.productValue.id && item.size === this.sizeValue)
       if (foundIndex >= 0) {
         cartArray[foundIndex].quantity = parseInt(cartArray[foundIndex].quantity) + 1
@@ -22,7 +22,6 @@ export default class extends Controller {
         })
       }
     } else {
-      const cartArray = []
       cartArray.push({
         id: this.productValue.id,
         name: this.productValue.name,
