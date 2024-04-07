@@ -47,7 +47,7 @@ export default class extends Controller {
     cartTotal.innerHTML = `<div class="border-t border-gray-200 mt-6 py-6">
         <div class="flex justify-between text-base font-medium text-gray-900">
           <p>Subtotal</p>
-          <p>$${total}</p>
+          <p>$${total.toFixed(2)}</p>
         </div>
         <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
       </div>`
