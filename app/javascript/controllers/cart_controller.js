@@ -35,7 +35,7 @@ export default class extends Controller {
           </div>
           <div class="flex flex-1 items-end justify-between text-sm">
             <p class="text-gray-500">Qty ${cart[i].quantity}</p>
-            <div class="flex remove-btn-container"> </div>
+            <div class="flex remove-btn-container"></div>
           </div>
         </div>`
 
@@ -52,6 +52,7 @@ export default class extends Controller {
         <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
       </div>`
   }
+
   removeFromCart(event) {
     let cart = JSON.parse(localStorage.getItem("cart"))
     const id = event.target.value
@@ -60,8 +61,38 @@ export default class extends Controller {
     localStorage.setItem("cart", JSON.stringify(cart))
     window.location.reload()
   }
+
   clearAll() {
     localStorage.removeItem("cart")
     window.location.reload()
+  }
+
+  checkout() {
+    const cart = JSON.parse(localStorage.getItem("cart"))
+    const payload = {
+      authenticity_token: "",
+      cart: cart
+    }
+
+    const csrfToken = document.querySelector("[name='csrf-token']").content
+
+    fetch("/checkout", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        "X-CSRF-Token": csrfToken
+      },
+      body: JSON.stringify(payload)
+    }).then(response => {
+      if (response.ok) {
+        window.location.href = body.url
+      } else {
+        const errorEl = document.createElement("div")
+        errorEl.innerText = `There was an error processing your order. ${body.error}`
+        errorEl.classList.add("mx-auto", "my-4", "max-w-screen-xl", "rounded-lg", "bg-red-100", "px-6", "py-5", "text-base", "text-red-700")
+        let errorContainer = document.getElementById("errorContainer")
+        errorContainer.appendChild(errorEl)
+      }
+    })
   }
 }
