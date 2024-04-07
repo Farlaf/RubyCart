@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:show]
   resources :products, only: [:show]
-  get "cart" => "cart#show"
+  get "cart" => "carts#show"
 
   get "admin" => "admin#index"
 
